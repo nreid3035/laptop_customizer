@@ -1,6 +1,7 @@
 import React from 'react';
 import slugify from 'slugify';
 import ChoosePart from '../ChoosePart/ChoosePart'
+import Feature from '../Feature/Feature'
 
 
 class Customize extends React.Component {
@@ -10,7 +11,22 @@ class Customize extends React.Component {
 
 
     render() {
-        const features = Object.keys(this.props.features).map((feature, idx) => {
+      const features = Object.keys(this.props.features).map((feature, idx) => {
+         console.log(feature)
+
+
+        return <Feature 
+                  key={idx}
+                  name={feature} 
+                  features={this.props.features[feature]}
+                  selected={this.props.selected}
+                  currencyFormat={this.props.currencyFormat}
+                  updateFeature={this.props.updateFeature} />
+      })  
+
+
+      
+        /*const features = Object.keys(this.props.features).map((feature, idx) => {
             const featureHash = feature + '-' + idx;
             const options = this.props.features[feature].map(item => {
               const itemHash = slugify(JSON.stringify(item));
@@ -19,7 +35,7 @@ class Customize extends React.Component {
                 selected={this.props.selected}
                 feature={feature}
                 item={item}
-                currencyFormat={this.props.currencyFormat}
+                }
                 updateFeature={this.props.updateFeature}/>
                 );
             });
@@ -32,7 +48,7 @@ class Customize extends React.Component {
                   {options}
                 </fieldset>
               );
-            });
+            });*/
 
         return (
             <form className='main__form'>

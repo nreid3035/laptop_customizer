@@ -8,7 +8,7 @@ class Cart extends React.Component {
 
 
     render() {
-
+        console.log(this.props)
 
         const summary = Object.keys(this.props.selected).map((feature, idx) => {
             const featureHash = feature + '-' + idx;
