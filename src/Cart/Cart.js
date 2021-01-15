@@ -1,5 +1,6 @@
 import React from 'react';
 import CartChoice from '../CartChoice/CartChoice'
+import Total from '../Total/Total'
 
 class Cart extends React.Component {
     constructor(props) {
@@ -22,21 +23,15 @@ class Cart extends React.Component {
             );
           });
 
-          const total = Object.keys(this.props.selected).reduce(
-            (acc, curr) => acc + this.props.selected[curr].cost,
-            0
-          );
+          
 
         return (
             <section className="main__summary">
             <h2>Your cart</h2>
             {summary}
-            <div className="summary__total">
-              <div className="summary__total__label">Total</div>
-              <div className="summary__total__value">
-                {this.props.currencyFormat.format(total)}
-              </div>
-            </div>
+              <Total currencyFormat={this.props.currencyFormat}
+                     selected={this.props.selected}/>
+
           </section>
         )
     }
